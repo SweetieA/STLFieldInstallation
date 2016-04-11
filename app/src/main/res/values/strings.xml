@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">STL Field Installation</string>
+    <string name="action_settings">Settings</string>
+    <string name="save_ticket">Save Ticket</string>
+    <string name="get_customers">Download Customer Information</string>
+    <string name="get_equipment">Download Item List</string>
+    <string name="overviewTab">Overview</string>
+    <string name="baseDataTab">Base Data</string>
+    <string name="installationTab">Installation</string>
+    <string name="surveyTab">Survey</string>
+    <string name="sysaidIdLabel">Sysaid Id</string>
+    <string name="siteIdLabel">Site Id</string>
+    <string name="linkIdLabel">Link Id</string>
+    <string name="customerNameLabel">Customer Name</string>
+    <string name="siteContactLabel">Site Contact Name</string>
+    <string name="taskTypeLabel">Task Type</string>
+    <string name="addressLabel">Address</string>
+    <string name="regionLabel">Region</string>
+    <string name="phoneLabel">Phone</string>
+    <string name="faxLabel">Fax</string>
+    <string name="mobileLabel">Mobile</string>
+    <string name="emailLabel">E-mail</string>
+    <string name="landlordNameLabel">Landlord Name</string>
+    <string name="rentStatusLabel">Rent Status</string>
+    <string name="equipmentLabel">Equipment</string>
+    <string name="serialNumberLabel">Serial Number</string>
+    <string name="quantityLabel">Quantity</string>
+    <string name="checkLabel">Checked</string>
+    <string name="remarksLabel">Remarks</string>
+    <string name="oldSerNumLabel">Old Serial Number</string>
+    <string name="powerStatusLabel">AC Main Power Status</string>
+    <string name="voltageLabel">Voltage Measurement</string>
+    <string name="airconLabel">Aircondition</string>
+    <string name="serverRoomLabel">Server Room Status</string>
+    <string name="locationIduLabel">Location of IDU</string>
+    <string name="earthingLabel">Earthing</string>
+    <string name="distanceIduLabel">Distance IDU</string>
+    <string name="securityLabel">Security of Cables</string>
+    <string name="ductsLabel">Ducts</string>
+    <string name="unitLabel">Unit to be Installed</string>
+    <string name="installationTypeLabel">Installation Type</string>
+    <string name="ispLabel">Other ISP</string>
+    <!--<string name="radioTypeLabel">Radio Type</string>-->
+    <string name="radioTypeLabel">Radio Type</string>
+    <string name="ispNameLabel">ISP Name</string>
+    <string name="snrLabel">Signal(RX)</string>
+    <string name="sntxLabel">Signal(TX)</string>
+    <string name="snrtxLabel">Signal(RTX)</string>
+    <string name="snrssiLabel">Signal(RSSI)</string>
+    <string name="sncinrLabel">Signal(CINR)</string>
+    <string name="bsLabel">Base Station</string>
+    <string name="signNameLabel">Your Name</string>
+    <string name="external_dir">GetSignature</string>
+    <string name="getSignature">Get Signature</string>
+
+    <string-array name="taskTypeArray">
+        <item>Installation</item>
+        <item>Dismantling</item>
+        <item>Relocation</item>
+        <item>Maintenance</item>
+        <item>Annual Maintenance</item>
+        <item>Replacement</item>
+        <item>Survey</item>
+    </string-array>
+    <string-array name="regionArray">
+        <item>Ashanti</item>
+        <item>Brong-Ahafo</item>
+        <item>Greater Accra</item>
+        <item>Central</item>
+        <item>Eastern</item>
+        <item>Northern</item>
+        <item>Western</item>
+        <item>Upper East</item>
+        <item>Upper West</item>
+        <item>Volta</item>
+    </string-array>
+    <string-array name="rentStatusArray">
+        <item>N/A</item>
+        <item>Own</item>
+        <item>Rented</item>
+    </string-array>
+    <string-array name="powerStatusArray">
+        <item>None</item>
+        <item>Stable</item>
+        <item>Unstable</item>
+    </string-array>
+    <string-array name="airconArray">
+        <item>None</item>
+        <item>Installed</item>
+    </string-array>
+    <string-array name="earthingArray">
+        <item>None</item>
+        <item>Installed</item>
+    </string-array>
+    <string-array name="ductsArray">
+        <item>NO</item>
+        <item>YES</item>
+    </string-array>
+    <string-array name="unitArray">
+        <item>NONE</item>
+        <item>VSAT</item>
+        <item>STAR</item>
+        <item>MESH</item>
+        <item>VOIP</item>
+        <item>RADIO P2P</item>
+        <item>RADIO SU</item>
+        <item>RADIO AU</item>
+    </string-array>
+    <string-array name="installationTypeArray">
+        <item>Roof Top</item>
+        <item>Ground</item>
+        <item>Wall Mount</item>
+        <item>Mast</item>
+    </string-array>
+    <string-array name="ispArray">
+        <item>NO</item>
+        <item>YES</item>
+    </string-array>
+    <string-array name="radioTypeArray">
+        <item>4.9 INTEGRATED</item>
+        <item>5.4 INTEGRATED</item>
+        <item>4.9 DETACHED</item>
+        <item>5.4 DETACHED</item>
+        <item>Wimax 3.7</item>
+    </string-array>
+
+    <string name="title_activity_signature">Signature Activity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="title_activity_display_overview">display_overview</string>
+    <string name="title_activity_data_view_actyivity">DataViewActyivity</string>
+    <string name="title_activity_settings">Settings</string>
+
+</resources>

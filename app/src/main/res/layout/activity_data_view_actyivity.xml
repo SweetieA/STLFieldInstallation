@@ -1,0 +1,82 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    tools:context="com.example.sweetiean.stlfieldinstallation1.DataViewActyivity">
+
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/dvSysaidId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:layout_marginEnd="15dp"
+            android:text="Sysaid Id"
+            android:textSize="20sp" />
+        <TextView
+            android:id="@+id/dvInstType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:layout_marginEnd="15dp"
+            android:text="Installation type"
+            android:textSize="20sp" />
+        <TextView
+            android:id="@+id/dvCustId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:layout_marginEnd="15dp"
+            android:text="Customer"
+            android:textSize="20sp" />
+        <TextView
+            android:id="@+id/dvEngineer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:layout_marginEnd="15dp"
+            android:text="Engineer"
+            android:textSize="20sp" />
+
+        <ListView
+            android:id="@+id/dvEquipmentListView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+
+
+        <Button
+            android:id="@+id/Okdata"
+            android:text="OK"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:onClick="OkView"/>
+
+
+        </LinearLayout>
+
+
+
+
+
+
+
+</LinearLayout>
