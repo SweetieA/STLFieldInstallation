@@ -19,7 +19,7 @@ import com.itextpdf.text.Paragraph;
  */
 public class FieldInstallationDB {
 
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     private static final String DATABASE_NAME = "field_installation_db";
 
     private static final String DATABASE_TABLE_SURVEY = "survey_table";
@@ -28,6 +28,8 @@ public class FieldInstallationDB {
     public static final String DATABASE_TABLE_SURVEY_TEST = "survey_test_table";
     public static final String TABLE_CUSTOMERS = "Customer_Table";
     public static final String TABLE_EQUIPMENT = "Equipment_Table";
+
+    public static final String TABLE_USERS = "Users_Table";
 
     //BASE DATA TABLE FIELDS FOR INFO TABLE
     public static final String ROW_ID = "_id";//also used in all other tables
@@ -101,6 +103,10 @@ public class FieldInstallationDB {
     //ITEMS FIELDS
     public static final String ITEM_NAME = "item_name";
     public static final String ITEM_NUMBER = "item_id";
+
+    //USERS FIELDS
+    public static final String USERNAME = "username";
+    public static final String PASSWORD = "password";
 
 
     private DbHelper fieldInstHelper;
@@ -842,6 +848,32 @@ public class FieldInstallationDB {
         }
     }
 
+    public long createUserRecord(String sql_username, String sql_password) {
+
+        ContentValues cv = new ContentValues();
+
+        cv.put(USERNAME, sql_username);
+        cv.put(PASSWORD, sql_password);
+
+
+        return fieldInstDatabase.insert(TABLE_USERS, null, cv);
+    }
+
+
+    public String getSinlgeEntry(String username)
+    {
+        Cursor cursor = fieldInstDatabase.query(TABLE_USERS, null, USERNAME + "=?", new String[]{username}, null, null, null);
+        if(cursor.getCount()<1) // UserName Not Exist
+        {
+            cursor.close();
+            return "USER DOES NOT EXIST";
+        }
+        cursor.moveToFirst();
+        String password= cursor.getString(cursor.getColumnIndex(PASSWORD));
+        cursor.close();
+        return password;
+    }
+
 
     public static class DbHelper extends SQLiteOpenHelper{
 
@@ -953,8 +985,13 @@ public class FieldInstallationDB {
         }
 
         @Override
-        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
-        {
+        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
+
+            db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_USERS + "("
+                    + ROW_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                    + USERNAME + " TEXT, "
+                    + PASSWORD + " TEXT);"
+            );
 
         }
     }

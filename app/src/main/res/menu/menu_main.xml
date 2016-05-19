@@ -27,7 +27,7 @@
         android:orderInCategory="100"
         app:showAsAction="never" />
 
-    <item
+   <!-- <item
         android:id="@+id/testinteg1"
         android:title="Test connection to web service"
         android:orderInCategory="100"
@@ -37,11 +37,17 @@
         android:id="@+id/testinteg2"
         android:title="Test connection to ERP"
         android:orderInCategory="100"
-        app:showAsAction="never" />
+        app:showAsAction="never" />-->
 
     <item
         android:id="@+id/create_csv"
         android:title="Create CSV"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/logout"
+        android:title="@string/logout"
         android:orderInCategory="100"
         app:showAsAction="never" />
 

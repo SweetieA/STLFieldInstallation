@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.sweetiean.stlfieldinstallation1" >
+    package="com.example.sweetiean.stlfieldinstallation1">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -23,12 +23,12 @@
         android:allowBackup="true"
         android:icon="@drawable/supertechlogo"
         android:label="@string/app_name"
-        android:theme="@style/Theme.AppCompat.Light" >
+        android:theme="@style/Theme.AppCompat.Light">
         <activity
             android:name=".MainActivity"
             android:icon="@drawable/supertechlogo"
             android:label="@string/app_name"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait">
 
             <!--
             <intent-filter>
@@ -48,11 +48,10 @@
 
         <activity
             android:name=".SignatureActivity"
-            android:label="@string/title_activity_signature" >
-        </activity>
+            android:label="@string/title_activity_signature" />
         <activity
             android:name=".SplashActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -61,16 +60,15 @@
         </activity>
         <activity
             android:name=".display_overview"
-            android:label="@string/title_activity_display_overview" >
-        </activity>
+            android:label="@string/title_activity_display_overview" />
         <activity
             android:name=".DataViewActyivity"
-            android:label="Details view" >
-        </activity>
+            android:label="Details view" />
         <activity
             android:name=".Setting"
-            android:label="@string/title_activity_settings" >
-        </activity>
+            android:label="@string/title_activity_settings" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".SignupActivity"></activity>
     </application>
 
 </manifest>

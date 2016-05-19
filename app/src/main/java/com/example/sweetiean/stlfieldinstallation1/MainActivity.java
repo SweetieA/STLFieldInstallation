@@ -1199,6 +1199,12 @@ public class MainActivity extends ActionBarActivity {
 
                 Toast.makeText(this, "Items successfully downloaded.", Toast.LENGTH_SHORT).show();
                 break;
+
+            case R.id.logout:
+                finish();
+                Intent logout = new Intent(this, LoginActivity.class);
+                startActivity(logout);
+                break;
             /*case R.id.testinteg1:
                 checkInstallType = "testWEBservice";
                 displayTxt(axcall.hellowWorld().toString());
