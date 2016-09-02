@@ -13,7 +13,7 @@
     <string name="sysaidIdLabel">Sysaid Id</string>
     <string name="siteIdLabel">Site Id</string>
     <string name="linkIdLabel">Link Id</string>
-    <string name="customerNameLabel">Customer Name</string>
+    <string name="customerNameLabel">Customer</string>
     <string name="siteContactLabel">Site Contact Name</string>
     <string name="taskTypeLabel">Task Type</string>
     <string name="addressLabel">Address</string>

@@ -24,11 +24,11 @@ public class myGetTasktypeListner implements AdapterView.OnItemSelectedListener 
             }
 
 
-            if (parent.getSelectedItem().toString().equals("Replacement")) {
+            /*if (parent.getSelectedItem().toString().equals("Replacement")) {
                 MainActivity.oldSerialNumber.setEnabled(true);
             } else {
                 MainActivity.oldSerialNumber.setEnabled(false);
-            }
+            }*/
         }
 
 

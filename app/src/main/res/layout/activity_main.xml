@@ -89,8 +89,7 @@
                                 android:layout_width="fill_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal"
-                                android:layout_marginBottom="10dp"
-                                android:visibility="gone">
+                                android:layout_marginBottom="10dp">
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -496,7 +495,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="Scan"
                                 android:onClick="scan"
-                                android:visibility="invisible"/>
+                                android:visibility="gone"/>
 
                         </LinearLayout>
 
@@ -519,7 +518,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:inputType="text|number" />
+                                android:inputType="number" />
 
                         </LinearLayout>
 
@@ -619,21 +618,21 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:visibility="invisible"/>
+                                android:visibility="gone"/>
 
                             <ImageView
                                 android:id="@+id/instImg2"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:visibility="invisible"/>
+                                android:visibility="gone"/>
 
                             <ImageView
                                 android:id="@+id/instImg3"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:visibility="invisible"/>
+                                android:visibility="gone"/>
 
 
                         </LinearLayout>

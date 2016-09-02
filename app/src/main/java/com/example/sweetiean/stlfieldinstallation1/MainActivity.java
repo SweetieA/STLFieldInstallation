@@ -288,6 +288,9 @@ public class MainActivity extends ActionBarActivity {
         }
 
         siteId = (EditText) findViewById(R.id.siteIdEditText);
+        if(siteId.getText().toString().length() == 0){
+            siteId.setError("Site Id is required");
+        }
 
         customerName = (AutoCompleteTextView) findViewById(R.id.customerNameAutoCompleteTextView);
         if(customerName.getText().toString().length() == 0){
@@ -328,6 +331,9 @@ public class MainActivity extends ActionBarActivity {
         task = (TextView) findViewById(R.id.taskTextView);
 
         equipment = (AutoCompleteTextView) findViewById(R.id.equipmentAutoCompleteTextView);
+        if(equipment.getText().toString().length() == 0){
+            equipment.setError("Equipment is required");
+        }
         FieldInstallationDB sqlitedb1 = new FieldInstallationDB(this);
         sqlitedb1.openForRead();
 
@@ -343,10 +349,26 @@ public class MainActivity extends ActionBarActivity {
         equipment.setThreshold(1);
 
         serialNumber = (EditText) findViewById(R.id.serialEditText);
+        if(serialNumber.getText().toString().length() == 0){
+            serialNumber.setError("Serial Number is required");
+        }
+
         quantity = (EditText) findViewById(R.id.quantityEditText);
+        if(quantity.getText().toString().length() == 0){
+            quantity.setError("Quantity is required");
+        }
+
         check = (CheckBox) findViewById(R.id.checkCheckBox);
         remarks = (EditText) findViewById(R.id.remarksEditText);
+        if(remarks.getText().toString().length() == 0){
+            remarks.setError("Remarks is required");
+        }
+
         oldSerialNumber = (EditText) findViewById(R.id.oldSerialEditText);
+        if(oldSerialNumber.getText().toString().length() == 0){
+            oldSerialNumber.setError("Old Serial Number is required");
+        }
+
         instImg1 = (ImageView) findViewById(R.id.instImg1);
         instImg2 = (ImageView) findViewById(R.id.instImg2);
         instImg3 = (ImageView) findViewById(R.id.instImg3);
@@ -721,6 +743,11 @@ public class MainActivity extends ActionBarActivity {
             Toast.makeText(this, "Sysaid Id is required", Toast.LENGTH_SHORT).show();
         }
 
+        if(siteId.getText().toString().length() == 0){
+            insert = false;
+            Toast.makeText(this, "Site Id is required", Toast.LENGTH_SHORT).show();
+        }
+
 
         if(customerName.getText().toString().length() == 0){
             insert = false;
@@ -761,26 +788,59 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void saveTaskInfo(View s) {
+        boolean insert = true;
+
+        if(equipment.getText().toString().length() == 0){
+            insert = false;
+            Toast.makeText(this, "Equipment is required", Toast.LENGTH_SHORT).show();
+        }
+
+        if(serialNumber.getText().toString().length() == 0){
+            insert = false;
+            Toast.makeText(this, "Serial Number is required", Toast.LENGTH_SHORT).show();
+        }
+
+        if(quantity.getText().toString().length() == 0){
+            insert = false;
+            Toast.makeText(this, "Quantity is required", Toast.LENGTH_SHORT).show();
+        }
+
+
+        if(remarks.getText().toString().length() == 0){
+            insert = false;
+            Toast.makeText(this, "Remarks is required", Toast.LENGTH_SHORT).show();
+        }
+
+
+        if(oldSerialNumber.getText().toString().length() == 0){
+            insert = false;
+            Toast.makeText(this, "Old Serial Number is required", Toast.LENGTH_SHORT).show();
+        }
 
         if (taskSpinner.getSelectedItem().toString().equals("Survey")) {
-            Toast.makeText(this, "You can only save information in the Survey Tab, for surveys", Toast.LENGTH_LONG).show();}
-            else {
-            //insertIntoInfoDb();
+
+            Toast.makeText(this, "You can only save information in the Survey Tab, for surveys", Toast.LENGTH_LONG).show();
+
+        } else if(insert)
+        {
             insertIntoTaskDb();
-            //insertIntoSurveyDb();
-            //writeTaskPdf();
             Toast.makeText(this, "TASK STORED SUCCESSFULLY", Toast.LENGTH_LONG).show();
-            //Intent intent = getIntent();
-            //finish();
-            //startActivity(intent);
-        }
-            //task.setText("");
+
             equipment.setText("");
+            serialNumber.setText("");
+            quantity.setText("");
+            check.setChecked(false);
+            remarks.setText("");
+            oldSerialNumber.setText("");
+
+        }
+
+            /*equipment.setText("");
             serialNumber.setText("");
             quantity.setText("");
             check.setText("");
             remarks.setText("");
-            oldSerialNumber.setText("");
+            oldSerialNumber.setText("");*/
 
 
 
