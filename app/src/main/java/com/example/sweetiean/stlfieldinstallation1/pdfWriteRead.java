@@ -71,6 +71,7 @@ public class pdfWriteRead {
             document.add(new Paragraph("Customer Name: " + MainActivity.customerName.getText().toString(), font1));
             document.add(new Paragraph("Site Contact: " + MainActivity.siteContact.getText().toString(), font1));
             document.add(new Paragraph("Task Type: " + MainActivity.taskSpinner.getSelectedItem().toString(), font1));
+            document.add(new Paragraph("Licence Plate No: " + MainActivity.licence.getText().toString(), font1));
             document.add(new Paragraph("Address: " + MainActivity.address.getText().toString(), font1));
             document.add(new Paragraph("Region: " + MainActivity.regionSpinner.getSelectedItem().toString(), font1));
             document.add(new Paragraph("Phone: " + MainActivity.phone.getText().toString(), font1));

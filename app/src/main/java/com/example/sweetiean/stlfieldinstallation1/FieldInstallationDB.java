@@ -580,7 +580,8 @@ public class FieldInstallationDB {
             result = MainActivity.axcall.pushInfoToAx(c.getString(iSysaid), c.getString(iDate), c.getString(iSite),
                     c.getString(iCustName), c.getString(iSiteCont), c.getString(iTask), c.getString(iAddress),
                     c.getString(iRegion), c.getString(iPhone), c.getString(iFax), c.getString(iMobile),
-                    c.getString(iMail), c.getString(iLanNam), c.getString(iRent), c.getString(iLocation), c.getString(iEngName), MainActivity.DeviceId.toString());
+                    c.getString(iMail), c.getString(iLanNam), c.getString(iRent), c.getString(iLocation),
+                    c.getString(iEngName), MainActivity.DeviceId);
 
 
 
@@ -846,6 +847,28 @@ public class FieldInstallationDB {
             this.close();
             return new String[] {};
         }
+    }
+
+    /*public static Cursor suggestItemCompletions(CharSequence str) {
+        fieldInstDatabase = openForRead();
+        Cursor c = fieldInstDatabase.query(TABLE_EQUIPMENT, new String[] {FieldInstallationDB.ITEM_NAME}, "(" + FieldInstallationDB.ITEM_NAME + " LIKE ? ", new String[] {"%" + str + "%"}, null);
+        *//*String select = "(" + DATABASE_NAME.TABLE_EQUIPMENT + " LIKE ? ";
+        String[]  selectArgs = { "%" + str + "%"};
+        String[] contactsProjection = new String[] {
+                Contacts._ID,
+                Contacts.DISPLAY_NAME,
+                Contacts.LOOKUP_KEY,  };*//*
+
+        return c;
+
+    }*/
+    public Cursor suggestItemCompletions(CharSequence str) {
+        fieldInstDatabase = openForRead();
+        String sql = "Select *  FROM "+ TABLE_EQUIPMENT+ " WHERE "+ ITEM_NAME + " LIKE ?";
+        String[]  selectArgs = new String[]{ "%" + str + "%"};
+
+        return fieldInstDatabase.rawQuery(sql,selectArgs);
+
     }
 
     public long createUserRecord(String sql_username, String sql_password) {

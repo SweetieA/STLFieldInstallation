@@ -21,6 +21,8 @@
 
     <application
         android:allowBackup="true"
+        android:hardwareAccelerated="false"
+        android:largeHeap="true"
         android:icon="@drawable/supertechlogo"
         android:label="@string/app_name"
         android:theme="@style/Theme.AppCompat.Light">

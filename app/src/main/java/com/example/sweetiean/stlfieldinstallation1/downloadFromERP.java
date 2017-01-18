@@ -21,11 +21,11 @@ public class downloadFromERP extends AsyncTask<String, Integer, Void> {
 
         try {
             if(MainActivity.itemClicked.equals("customers")) {
-                result = MainActivity.axcall.customers();
+                result = WebService.customers();
                 MainActivity.jsonString = result;
             }
             if(MainActivity.itemClicked.equals("items")){
-                result = MainActivity.axcall.equipment();
+                result = WebService.equipment();
                 MainActivity.jsonString = result;
             }
         }

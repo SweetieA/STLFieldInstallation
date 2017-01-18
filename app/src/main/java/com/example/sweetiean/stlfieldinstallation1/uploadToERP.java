@@ -99,7 +99,7 @@ public class uploadToERP extends AsyncTask<String, Integer, Void> {
 
         }
 
-        Toast.makeText(context, "Upload to ERP complete!!!", Toast.LENGTH_LONG).show();
+        //Toast.makeText(context, "Upload to ERP complete!!!", Toast.LENGTH_LONG).show();
 
     }
 

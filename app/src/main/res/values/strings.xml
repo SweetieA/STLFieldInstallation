@@ -139,5 +139,6 @@
     <string name="confirm_password">Confirm Password</string>
     <string name="sign_up">Sign Up</string>
     <string name="logout">Logout</string>
+    <string name="licenceLabel">Licence Plate No</string>
 
 </resources>

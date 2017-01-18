@@ -40,9 +40,11 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.FilterQueryProvider;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
 import android.widget.TabHost;
 import android.widget.TextView;
@@ -88,7 +90,7 @@ public class MainActivity extends ActionBarActivity {
     public static String sysaidIdFileName;
     public String sysaididContext;
 
-    public static String DeviceId;
+    public static String DeviceId, licenceText;
     public static String checkInstallType;
     public static String jsonString, itemClicked;
 
@@ -97,7 +99,7 @@ public class MainActivity extends ActionBarActivity {
 
 
     //base data widgets start declaration
-    public static EditText sysaidId, siteId, siteContact, address, phone, fax, mobile, email, landlordName;
+    public static EditText sysaidId, siteId, siteContact, address, phone, fax, mobile, email, landlordName, licence;
     public static Spinner taskSpinner, regionSpinner, rentStatusSpinner;
     public static TextView locationCords;
     GoogleMap map;
@@ -146,8 +148,20 @@ public class MainActivity extends ActionBarActivity {
     private static final String TAG_NUMBER_ITEM = "ItemID";
 
 
+    final static int[] toView = new int[] { android.R.id.text1 };
+    final static String[] fromCol = new String[] { FieldInstallationDB.ITEM_NAME };
 
+    /*public Cursor suggestItemCompletions(CharSequence str) {
+        *//*String select = "(" + DATABASE_NAME.TABLE_EQUIPMENT + " LIKE ? ";
+        String[]  selectArgs = { "%" + str + "%"};
+        String[] contactsProjection = new String[] {
+                Contacts._ID,
+                Contacts.DISPLAY_NAME,
+                Contacts.LOOKUP_KEY,  };*//*
 
+        return sqldb.rawQuery(null, new String[] {FieldInstallationDB.ITEM_NAME}, "(" + FieldInstallationDB.ITEM_NAME + " LIKE ? ", new String[] {"%" + str + "%"}, null);
+
+    }*/
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
@@ -320,6 +334,11 @@ public class MainActivity extends ActionBarActivity {
         mobile = (EditText) findViewById(R.id.mobileEditText);
         email = (EditText) findViewById(R.id.emailEditText);
         landlordName = (EditText) findViewById(R.id.landlordNameEditText);
+        licence = (EditText) findViewById(R.id.licenceEditText);
+        if(licence.getText().toString().length() == 0){
+            licence.setError("Licence Plate No. is required");
+        }
+
         locationCords = (TextView) findViewById(R.id.locTextView);
 
 
@@ -334,19 +353,41 @@ public class MainActivity extends ActionBarActivity {
         if(equipment.getText().toString().length() == 0){
             equipment.setError("Equipment is required");
         }
-        FieldInstallationDB sqlitedb1 = new FieldInstallationDB(this);
+        final FieldInstallationDB sqlitedb1 = new FieldInstallationDB(this);
         sqlitedb1.openForRead();
 
-        String[] items = sqlitedb.getAllItemNames();
+        String[] items = sqlitedb1.getAllItemNames();
 
         for(int i = 0; i < items.length; i++)
         {
             Log.i(this.toString(), items[i]);
         }
 
-        ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, items);
-        equipment.setAdapter(adapter1);
+        /*ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, items);
+        equipment.setAdapter(adapter1);*/
         equipment.setThreshold(1);
+
+        //simplecursoradapter example
+        SimpleCursorAdapter itemNameAdapter = new SimpleCursorAdapter(
+                this, android.R.layout.simple_dropdown_item_1line, null, fromCol, toView, 0);
+
+
+        itemNameAdapter.setFilterQueryProvider(new FilterQueryProvider() {
+
+            public Cursor runQuery(CharSequence constraint) {
+                return sqlitedb1.suggestItemCompletions(constraint);
+            }
+        });
+
+        itemNameAdapter.setCursorToStringConverter(new SimpleCursorAdapter.CursorToStringConverter() {
+            public CharSequence convertToString(Cursor cur) {
+                int index = cur.getColumnIndex(FieldInstallationDB.ITEM_NAME);
+                return cur.getString(index);
+            }});
+        equipment.setAdapter(itemNameAdapter);//end simple cursor adapter
+
+
+
 
         serialNumber = (EditText) findViewById(R.id.serialEditText);
         if(serialNumber.getText().toString().length() == 0){
@@ -595,7 +636,7 @@ public class MainActivity extends ActionBarActivity {
         String sql_landlord_name = landlordName.getText().toString();
         String sql_rent_status = rentStatusSpinner.getSelectedItem().toString();
         String sql_loc_cords = locationCords.getText().toString();
-        String sql_eng_name = engineer_name;
+        String sql_eng_name = engineer_name +" : "+ licence.getText().toString();
         String sql_eng_sign = engineer_sign;
 
         if (sql_task_type.equals("Survey")) {
@@ -760,11 +801,17 @@ public class MainActivity extends ActionBarActivity {
             Toast.makeText(this, "Site Contact Name is required", Toast.LENGTH_SHORT).show();
         }
 
+        if(licence.getText().toString().length() == 0){
+            insert = false;
+            Toast.makeText(this, "Licence Plate No. is required", Toast.LENGTH_SHORT).show();
+        }
+
         if (count < 6) {
 
             Toast.makeText(this, "6 IMAGES REQUIRED", Toast.LENGTH_LONG).show();
 
-        } else if(insert == true){
+
+        } else if(insert){
             String selection;
             insertIntoInfoDb();
             insertIntoSurveyDb();//because of the task pictures being saved in the survey db no matter what there shd be an insert
@@ -1250,22 +1297,22 @@ public class MainActivity extends ActionBarActivity {
                 downloadFromERP download_customers = new downloadFromERP(getParent());
                 download_customers.execute();
 
-                Toast.makeText(this, "Customers successfully downloaded.", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "Customers successfully downloaded.", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.get_equipment:
                 itemClicked = "items";
                 downloadFromERP download_items = new downloadFromERP(getParent());
                 download_items.execute();
 
-                Toast.makeText(this, "Items successfully downloaded.", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "Items successfully downloaded.", Toast.LENGTH_SHORT).show();
                 break;
 
-            case R.id.logout:
+            /*case R.id.logout:
                 finish();
                 Intent logout = new Intent(this, LoginActivity.class);
                 startActivity(logout);
                 break;
-            /*case R.id.testinteg1:
+            case R.id.testinteg1:
                 checkInstallType = "testWEBservice";
                 displayTxt(axcall.hellowWorld().toString());
                 break;

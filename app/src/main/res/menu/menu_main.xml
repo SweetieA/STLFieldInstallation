@@ -39,7 +39,7 @@
         android:orderInCategory="100"
         app:showAsAction="never" />-->
 
-    <item
+    <!--<item
         android:id="@+id/create_csv"
         android:title="Create CSV"
         android:orderInCategory="100"
@@ -49,7 +49,7 @@
         android:id="@+id/logout"
         android:title="@string/logout"
         android:orderInCategory="100"
-        app:showAsAction="never" />
+        app:showAsAction="never" />-->
 
 
 </menu>
